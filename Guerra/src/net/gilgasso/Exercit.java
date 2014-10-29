@@ -25,7 +25,7 @@ public class Exercit {
 	
 	public void formacio(){
 		
-		if(soldatsallistats.size()==20){
+		if(soldatsallistats.size()>=20){
 		numfiles = 7;
 		}else{
 		
@@ -65,8 +65,8 @@ public class Exercit {
 		
 		if(this.direccio==0){
 		for(Soldat soldatmou : soldatsallistats ){
-			soldatmou.mouresoldat(15, 0);
-			Exercitpausa.pause(5);
+			soldatmou.mouresoldat(16, 0);
+			Exercitpausa.pause(10);
 			
 		}
 		
@@ -74,7 +74,7 @@ public class Exercit {
 		{
 			for(Soldat soldatmou : soldatsallistats ){
 				soldatmou.mouresoldat(-15, 0);
-				Exercitpausa.pause(5);
+				Exercitpausa.pause(10);
 		}
 		
 	}
@@ -107,6 +107,7 @@ public class Exercit {
 			if(soldiers.desti==true){
 				contadordesti+=1;
 			}
+			System.out.println(contadordesti+" "+soldatsallistats.size());
 		if (contadordesti==soldatsallistats.size()){
 			arribadesti=true;
 		 }

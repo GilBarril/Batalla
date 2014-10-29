@@ -3,7 +3,7 @@ import acm.program.*;
 import acm.graphics.*;
 
 
-public class Soldat {
+public class Soldat{
 	
 	GImage imatgesoldat;
     boolean desti;

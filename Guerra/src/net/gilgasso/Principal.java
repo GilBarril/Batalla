@@ -15,6 +15,8 @@ public class Principal extends GraphicsProgram {
 	Exercit exercit1;
 	Exercit exercit2;
 	
+	GImage finalguerra = new GImage("");
+	
 	public int getWidth() {
 		
 		return super.getWidth();
@@ -24,7 +26,7 @@ public class Principal extends GraphicsProgram {
 		soldatsalabatalla = new ArrayList<Soldat>();
 		soldatsalabatalla2 = new ArrayList<Soldat>();
 		
-		for(int i=0;i<20;i++){
+		for(int i=0;i<30;i++){
 			Soldat sold = new Soldat("soldi.png",0,0);
 			Soldat soldi = new Soldat("soldat.png",0,0);
 			soldatsalabatalla.add(soldi);
@@ -37,7 +39,7 @@ public class Principal extends GraphicsProgram {
 		exercits.add(exercit1);
 		exercits.add(exercit2);
 		
-		for(int index=0;index<20;index++){
+		for(int index=0;index<30;index++){
 			add(exercit1.soldatsallistats.get(index).imatgesoldat);
 			add(exercit2.soldatsallistats.get(index).imatgesoldat);
 			
@@ -49,6 +51,8 @@ public class Principal extends GraphicsProgram {
 		Ardenas.Guerra();
 		
 		}
+		this.removeAll();
+		Ardenas.mostrarguanyador(Ardenas.idexercitperdedor);
 		
 		
 		
