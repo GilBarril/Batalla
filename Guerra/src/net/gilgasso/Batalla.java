@@ -4,14 +4,33 @@ import java.util.concurrent.*;
 import java.awt.event.*;
 
 import acm.graphics.GImage;
-
+/**
+ * 
+ * @author gil
+ *
+ */
 public class Batalla {
-	
+	/**
+	 *  mira si un dels exercits esta sense soldats 
+	 */
 	boolean mirarvictoria=false;
+	/**
+	 * passa l'identificador de l'exèrcit que perd
+	 */
 	int idexercitperdedor=0;
+	/**
+	 *  l' array d'exercits que formen la batalla
+	 */
 	ArrayList<Exercit> exercits;
+	/**
+	 * Passo la pantalla per poder utilitzar les seves propietats
+	 */
 	Principal Batallapausa;
-	
+	/**
+	 * 
+	 * @param pausa  passo els paràmetres de la pantalla
+	 * @param battle2 passo l'array d'exercits
+	 */
 	Batalla(Principal pausa,ArrayList<Exercit> battle2){
 		
 	exercits = battle2;	
@@ -23,13 +42,12 @@ public class Batalla {
 	public void Guerra(){
 		
 
-		
-			for(Exercit exercitsbatalla : exercits ){
+			for ( Exercit exercitsbatalla : exercits ) {
 				exercitsbatalla.formacio();
 				Batallapausa.pause(100); 	
 	    }
 		
-		while(!exercits.get(0).comprobardestisoldats() && !exercits.get(1).comprobardestisoldats() && !mirarvictoria){
+		while ( !exercits.get(0).comprobardestisoldats() && !exercits.get(1).comprobardestisoldats() && !mirarvictoria) {
 			
 				exercits.get(0).moure();
 				exercits.get(1).comprovarbaixes(exercits.get(0).soldatsallistats);
@@ -43,23 +61,27 @@ public class Batalla {
 		}
 			
 		
-		for(int s=0;s<exercits.size();s++){
-			if(exercits.get(s).direccio==0){
-				exercits.get(s).direccio=1;
+		for (int s = 0; s<exercits.size() ; s++) {
+			if (exercits.get(s).direccio == 0){
+				exercits.get(s).direccio = 1;
 			}
 			else{
-				exercits.get(s).direccio=0;
+				exercits.get(s).direccio = 0;
 			}	
 	    }	
 		Batallapausa.pause(50);
     }	
 	
+	/**
+	 *  Miro el nombre de soldats
+	 * @return torno el boolean que em diu si hi ha una victoria
+	 */
 	public final boolean mirarnumerodesoldats(){
 	
 		
-		for(int exer=0;exer<exercits.size();exer++){
+		for (int exer = 0; exer<exercits.size(); exer++){
 			
-			if(exercits.get(exer).soldatsallistats.size()==0){
+			if (exercits.get(exer).soldatsallistats.size() == 0) {
 				mirarvictoria = true;
 				idexercitperdedor=exer;
 			}
@@ -69,15 +91,18 @@ public class Batalla {
 		
 		
 	}
-	
-	public void mostrarguanyador(int idexer){
+	/**
+	 *  Mostro l'exercit guanyador
+	 * @param idexer id de l'exercit perdedor
+	 */
+	public void mostrarguanyador(int idexer) {
 		GImage win = new GImage("",200,200);
-		for(int b=0;b<exercits.size();b++){
-			if(b==idexer){
-				if(idexer==0){
+		for (int b = 0; b<exercits.size(); b++) {
+			if (b == idexer) {
+				if (idexer == 0) {
 					win.setImage("soldi.png");
 					win.setSize(150, 150);
-				}else{
+				} else {
 					win.setImage("soldat.png");
 					win.setSize(150, 150);
 				}
