@@ -1,7 +1,7 @@
 package net.gilgasso;
 import acm.program.*;
 import acm.graphics.*;
-
+import net.gilgasso.Bolafoc;
 
 public abstract class Personatge{
 	
@@ -9,18 +9,25 @@ public abstract class Personatge{
     boolean desti;
 	public String tipuspersonatge;
 	public int vides;
-	
-	public Personatge(String imatge,String tipus,int x,int y,boolean des,int v){
+	int ampladapantalla;
+	public Personatge(String imatge,String tipus,int x,int y,boolean des,int v,int a){
 		   
 		  imatgepersonatge = new GImage(imatge,x,y);
 		  tipuspersonatge = tipus;
 		  desti=des;
 		  vides=v;
+		  ampladapantalla=a;
 	   }
 	
 	
 	
-   public GImage getImatgepersonatge() {
+   public void setImatgepersonatge(String s,double x,double y) {
+		this.imatgepersonatge = new GImage(s,x,y);
+	}
+
+
+
+public GImage getImatgepersonatge() {
 		return imatgepersonatge;
 	}
 
@@ -36,6 +43,14 @@ public abstract class Personatge{
 	public String toString(){
 		return tipuspersonatge + " " +desti;
 	}
+
+
+
+	public abstract Bolafoc treureboladefoc(int d);
+
+
+
+
 
 }
 

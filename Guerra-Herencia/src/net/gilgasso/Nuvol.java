@@ -3,17 +3,17 @@ import acm.program.*;
 import acm.graphics.*;
 
 
-public class Soldat extends Personatge{
+public class Nuvol extends Personatge{
 	
 	
  int ampladapantalla;
 	
 	
-	public Soldat(String imatge,int x,int y,boolean desti,int v,int a){
+	public Nuvol(String imatge,int x,int y,boolean desti,int v,int a){
 		   
-		super(imatge,"soldat",x,y,desti,v,a);
+		super(imatge,"nuvol",x,y,desti,v,a);
+		ampladapantalla = a;   
 		   
-		  ampladapantalla = a; 
 	   }
 	
    public void moure(int x,int y){

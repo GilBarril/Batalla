@@ -35,9 +35,10 @@ public class Batalla {
 				exercits.get(1).comprovarbaixes(exercits.get(0).soldatsallistats);
 				exercits.get(1).moure();
 				exercits.get(0).comprovarbaixes(exercits.get(1).soldatsallistats);
+				exercits.get(0).atacdelsdracs(exercits.get(0).direccio);
+				exercits.get(1).atacdelsdracs(exercits.get(1).direccio);
 				
-				
-				Batallapausa.pause(10); 	
+				Batallapausa.pause(38); 	
 				this.mirarnumerodesoldats();
 			
 		}

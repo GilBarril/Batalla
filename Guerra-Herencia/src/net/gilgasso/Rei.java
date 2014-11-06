@@ -9,9 +9,9 @@ public class Rei extends Personatge{
     boolean desti;
 	
 	
-	public Rei(String imatge,int x,int y,boolean desti,int v){
+	public Rei(String imatge,int x,int y,boolean desti,int v,int a){
 		   
-		super(imatge,"rei",x,y,desti,v);
+		super(imatge,"rei",x,y,desti,v,a);
 		   
 		   
 	   }
@@ -20,7 +20,7 @@ public class Rei extends Personatge{
 	   
 	   this.desti=true;
 	       
-	   if(imatgepersonatge.getY()<0 || imatgepersonatge.getY()>360-imatgepersonatge.getHeight()){
+	   if(imatgepersonatge.getY()<0 || imatgepersonatge.getY()>560-imatgepersonatge.getHeight()){
 		   if(movimenty==-1){
 			   movimenty=1;
 		   }else{
@@ -34,6 +34,12 @@ public class Rei extends Personatge{
 		
 		
 	}
+
+@Override
+public Bolafoc treureboladefoc(int dir) {
+	// TODO Auto-generated method stub
+	return null;
+}
 	
 	
 
