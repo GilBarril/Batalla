@@ -19,7 +19,7 @@ public class Bolafoc extends Personatge{
 
 public void moure(int x,int y){
 		
-		if(imatgepersonatge.getX()<ampladapantalla-imatgepersonatge.getWidth()&&imatgepersonatge.getX()>-1){
+		if(imatgepersonatge.getX()<ampladapantalla-imatgepersonatge.getWidth()&&imatgepersonatge.getX()>0){
 			imatgepersonatge.move(x,y);
 		
 		}
@@ -28,12 +28,6 @@ public void moure(int x,int y){
 		}
 	}
 
-
-	@Override
-	public Bolafoc treureboladefoc(int dir) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
    
 	

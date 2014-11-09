@@ -46,9 +46,6 @@ public GImage getImatgepersonatge() {
 
 
 
-	public abstract Bolafoc treureboladefoc(int d);
-
-
 
 
 

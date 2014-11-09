@@ -128,7 +128,7 @@ public class Exercit {
 		for(Personatge soldatsdracs : soldatsallistats){
 		if(soldatsdracs instanceof Drac){
 			if(tirarfoc==8){
-				flama = soldatsdracs.treureboladefoc(this.direccio);
+				flama = ((Drac)soldatsdracs).treureboladefoc(this.direccio);
 				Exercitpausa.add(flama.imatgepersonatge);
 			    bolesdefoc.add(flama);
 			}

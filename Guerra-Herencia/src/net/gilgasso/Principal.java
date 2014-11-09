@@ -23,11 +23,11 @@ public class Principal extends GraphicsProgram {
 	}
 	
 	public void run(){
-		int  numsoldats=15;
+		int  numsoldats=8;
 		soldatsalabatalla = new ArrayList<Personatge>();
 		soldatsalabatalla2 = new ArrayList<Personatge>();
-		Personatge rei1 = new Rei("reinikochan.png",0,0,false,1,this.getWidth());
-		Personatge rei2 = new Rei("nikochan-1.png",0,0,false,1,this.getWidth());
+		Personatge rei1 = new Rei("reilila.png",0,0,false,1,this.getWidth());
+		Personatge rei2 = new Rei("reiverd.png",0,0,false,1,this.getWidth());
 		soldatsalabatalla.add(rei1);
 		soldatsalabatalla2.add(rei2);
 		
@@ -35,8 +35,8 @@ public class Principal extends GraphicsProgram {
 		  int numerosoldat = (int) (Math.random()*8)+1;
 			
 			if(numerosoldat==4){
-				Personatge soldur1 = new SoldatDur("rei.png",0,0,false,2,this.getWidth());
-				Personatge soldur2 = new SoldatDur("rei1.png",0,0,false,2,this.getWidth());
+				Personatge soldur1 = new SoldatDur("android-dur-lila.png",0,0,false,2,this.getWidth());
+				Personatge soldur2 = new SoldatDur("android-dur-verd.png",0,0,false,2,this.getWidth());
 				soldatsalabatalla.add(soldur1);
 				soldatsalabatalla2.add(soldur2);
 			}

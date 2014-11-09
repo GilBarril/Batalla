@@ -26,12 +26,6 @@ public class SoldatDur extends Personatge{
 			this.desti=true;
 		}
 	}
-
-@Override
-public Bolafoc treureboladefoc(int dir) {
-	// TODO Auto-generated method stub
-	return null;
-}
 	
 
 }

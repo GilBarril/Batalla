@@ -27,12 +27,6 @@ public class Samurai extends Personatge{
 		}
 	}
 
-@Override
-public Bolafoc treureboladefoc(int dir) {
-	// TODO Auto-generated method stub
-	return null;
-}
-	
-	
+
 
 }

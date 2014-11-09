@@ -38,7 +38,7 @@ public class Batalla {
 				exercits.get(0).atacdelsdracs(exercits.get(0).direccio);
 				exercits.get(1).atacdelsdracs(exercits.get(1).direccio);
 				
-				Batallapausa.pause(38); 	
+				Batallapausa.pause(55); 	
 				this.mirarnumerodesoldats();
 			
 		}
