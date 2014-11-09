@@ -102,18 +102,18 @@ public class Exercit {
 		
 		if(this.direccio==0){
 		for(Soldat soldatmou : soldatsallistats ){
-			soldatmou.mouresoldat(16, 0);
-			Exercitpausa.pause(10);
+			soldatmou.mouresoldat(10, 0);
+			
 			
 		}
-		
+		Exercitpausa.pause(50);
 		}else
 		{
 			for(Soldat soldatmou : soldatsallistats ){
-				soldatmou.mouresoldat(-15, 0);
-				Exercitpausa.pause(10);
+				soldatmou.mouresoldat(-9, 0);
+				
 		}
-		
+			Exercitpausa.pause(50);
 	}
 	
 	}
