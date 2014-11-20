@@ -13,11 +13,11 @@ public class Batalla {
 	/**
 	 *  mira si un dels exercits esta sense soldats 
 	 */
-	boolean mirarvictoria=false;
+	static boolean mirarvictoria=false;
 	/**
 	 * passa l'identificador de l'exèrcit que perd
 	 */
-	int idexercitperdedor=0;
+	static int idexercitperdedor=0;
 	/**
 	 *  l' array d'exercits que formen la batalla
 	 */
@@ -25,7 +25,7 @@ public class Batalla {
 	/**
 	 * Passo la pantalla per poder utilitzar les seves propietats
 	 */
-	Principal Batallapausa;
+	Principal Batallacanvas;
 	/**
 	 * 
 	 * @param pausa  passo els paràmetres de la pantalla
@@ -34,7 +34,7 @@ public class Batalla {
 	Batalla(Principal pausa,ArrayList<Exercit> battle2){
 		
 	exercits = battle2;	
-	Batallapausa=pausa;
+	Batallacanvas=pausa;
 			
 	}
 	
@@ -44,7 +44,7 @@ public class Batalla {
 
 			for ( Exercit exercitsbatalla : exercits ) {
 				exercitsbatalla.formacio();
-				Batallapausa.pause(100); 	
+				Batallacanvas.pause(100); 	
 	    }
 		
 		while ( !exercits.get(0).comprobardestisoldats() && !exercits.get(1).comprobardestisoldats() && !mirarvictoria) {
@@ -55,7 +55,7 @@ public class Batalla {
 				exercits.get(0).comprovarbaixes(exercits.get(1).soldatsallistats);
 				
 				
-				Batallapausa.pause(10); 	
+				Batallacanvas.pause(10); 	
 				this.mirarnumerodesoldats();
 			
 		}
@@ -69,7 +69,7 @@ public class Batalla {
 				exercits.get(s).direccio = 0;
 			}	
 	    }	
-		Batallapausa.pause(50);
+		Batallacanvas.pause(50);
     }	
 	
 	/**
@@ -108,7 +108,7 @@ public class Batalla {
 				}
 		    }
 		}
-		Batallapausa.add(win);
+		Batallacanvas.add(win);
 		
 	}
 	

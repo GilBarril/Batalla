@@ -16,7 +16,7 @@ public class Principal extends GraphicsProgram {
 	/**
 	 * numero de soldats per a cada exercit
 	 */
-	public final int numerosoldats=30;
+	public final static int numerosoldats=30;
 	/**
 	 *  Array exercits
 	 */
@@ -58,8 +58,8 @@ public class Principal extends GraphicsProgram {
 		 * creo els soldats
 		 */
 		for(int i=0;i<numerosoldats;i++){
-			Soldat sold = new Soldat("soldi.png",0,0);
-			Soldat soldi = new Soldat("soldat.png",0,0);
+			Soldat sold = new Soldat("soldi.png",0,0,this.getWidth());
+			Soldat soldi = new Soldat("soldat.png",0,0,this.getWidth());
 			soldatsalabatalla.add(soldi);
 			soldatsalabatalla2.add(sold);
 		}
@@ -71,8 +71,8 @@ public class Principal extends GraphicsProgram {
 		exercits.add(exercit2);
 		
 		for(int index=0;index<numerosoldats;index++){
-			add(exercit1.soldatsallistats.get(index).imatgesoldat);
-			add(exercit2.soldatsallistats.get(index).imatgesoldat);
+			add(exercit1.soldatsallistats.get(index).imatgepersonatge);
+			add(exercit2.soldatsallistats.get(index).imatgepersonatge);
 			
 			}
 		

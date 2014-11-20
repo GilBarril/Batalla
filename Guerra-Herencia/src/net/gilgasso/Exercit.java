@@ -2,22 +2,64 @@ package net.gilgasso;
 import java.util.ArrayList;
 import net.gilgasso.Drac;
 import acm.graphics.*;
-
+/**
+ * 
+ * @author gil
+ *
+ */
 public class Exercit {
+	/**
+	 * un objecte Bola de Foc
+	 */
     Bolafoc flama;
+    /**
+     * Un array list de boles de foc
+     */
     ArrayList<Bolafoc> bolesdefoc;
+    /**
+     * Un array list de Personatges
+     */
 	ArrayList<Personatge> soldatsallistats;
+	/**
+	 * variable per agafar l'index dels kamikazes(nuvol,bolafoc)
+	 */
 	int matadorz;
-	boolean esatacnuvol=false;
-	boolean esatacfoc=false;
-	int numfiles=0;
-	int Altura =72;
-	int Amplada =72;
-	int direccio=0;
-	int ampladaPantalla=0;
+	/**
+	 * boolean per saber si ha sigut atac kamikaze
+	 */
+	boolean esatackamikaze=false;
+	/**
+	 * nombre de files de la formació
+	 */
+	static int numfiles=6;
+	/**
+	 * altura fila
+	 */
+	static final int ALTURA=72;
+	/**
+	 * amplada fila
+	 */
+	static final int AMPLADA=72;
+	/**
+	 * la direcció de l'exercit
+	 */
+	int direccio;
+	/**
+	 * amplada de la pantalla
+	 */
+	static int ampladaPantalla;
+	/**
+	 * objecte principal(pantalla)
+	 */
 	Principal Exercitpausa;
 
-
+    /**
+     * 
+     * @param pauses propietats del canvas(principal)
+     * @param soldatsexercit array de PERSONATGES
+     * @param dir la direcció de l'exercit
+     * @param ampladapantalla l'amplada de la pantalla
+     */
 	Exercit(Principal pauses,ArrayList<Personatge> soldatsexercit,int dir,int ampladapantalla){
 		
 		soldatsallistats = soldatsexercit;
@@ -27,99 +69,70 @@ public class Exercit {
 		
 	}
 
-	
+	/**
+	 * creem la formació de l'exercit
+	 */
 	public void formacio(){
 		
-		if(soldatsallistats.size()>=10){
-		numfiles = 6;
-		}else{
-		if(numfiles>2){
-		   numfiles-=2;
-		}
-		}
+		if(soldatsallistats.size()<=10 && numfiles>1){
+			 numfiles-=1;
+			 
+		  }
+		
+		
 		int[] files=new int[numfiles];
 		
 		for(Personatge peons : soldatsallistats){
-			peons.desti=false;
-			int quinafila = (int)(Math.random()*numfiles);
-			if(this.direccio==1){
-			files[quinafila]++;
-	        peons.setPosicio(ampladaPantalla-(files[quinafila]* Amplada), quinafila*Altura);
-	        
-			}else{
-			peons.setPosicio(files[quinafila]* Amplada, quinafila*Altura);
-		    files[quinafila]++;	
+			if(peons.esforma==true){	
+				peons.desti=false;
+				int quinafila = (int)(Math.random()*numfiles);
+				if(this.direccio==1){
+					files[quinafila]++;
+			        peons.setPosicio(ampladaPantalla-(files[quinafila]* AMPLADA), quinafila*ALTURA);
+		        
+				}else{
+					peons.setPosicio(files[quinafila]* AMPLADA, quinafila*ALTURA);
+				    files[quinafila]++;	
+				}
 			}
 		}
 		
 		
 		}
 		
-		
+	/**
+	 * 
+	 * @return array de Personatges
+	 */
 	public ArrayList<Personatge> getSoldatsallistats() {
 		return soldatsallistats;
 	}
 
-
+    /**
+     * 
+     * @param soldatsallistats reps Array de Personatges
+     */
 	public void setSoldatsallistats(ArrayList<Personatge> soldatsallistats) {
 		this.soldatsallistats = soldatsallistats;
 	}
 	
 	
-	
+	/**
+	 * crides el mètode moure
+	 */
 	public void moure(){
 		
 		
 		for(Personatge soldatmou : soldatsallistats ){	
-			
-			if(soldatmou instanceof Rei){
-				soldatmou.moure(0,5);
-			}
-			
-			if(this.direccio==0){
-				 if(soldatmou.tipuspersonatge!="rei"){
-					if(soldatmou instanceof Nuvol){
-						soldatmou.moure(20,0);
-					}
-					if(soldatmou instanceof Samurai){
-						soldatmou.moure(12,0);
-					}
-					if(soldatmou instanceof Bolafoc){
-						soldatmou.moure(20,0);
-					}					
-					else{
-					 soldatmou.moure(6,0);
-					}
-					
-				 }
-					
-			   }
-				else
-			   {
-				if(soldatmou.tipuspersonatge!="rei"){
-					if(soldatmou instanceof Nuvol){
-						soldatmou.moure(-24,0);
-					}
-					if(soldatmou instanceof Samurai){
-						soldatmou.moure(-11,0);
-					}
-					if(soldatmou instanceof Bolafoc){
-						soldatmou.moure(-20,0);
-					}	
-					else{
-					 soldatmou.moure(-5,0);
-					}
-					
-				}
-					
-							
-			
-			
+			soldatmou.moure(this.direccio);
 		}
 	}
 		
-}
-		
+
+	/**
+	 * 	motode per atacar amb els androids drac
+	 * @param direccio li passes la direcció de l'exercit
+	 */
 	public void atacdelsdracs(int direccio){
 		bolesdefoc = new ArrayList<Bolafoc>();
 		int tirarfoc = (int)(Math.random()*40)+1;
@@ -140,18 +153,23 @@ public class Exercit {
 		}
 		
 }
-
+    /**
+     * mètode per comprobar baixes
+     * @param soldats passo array de l'exercit enemic
+     */
 	public void comprovarbaixes(ArrayList<Personatge> soldats){
-		esatacnuvol=false;
-		esatacfoc=false;
+		esatackamikaze=false;
 		for(int z=0;z<this.soldatsallistats.size();z++){
 			for(int a=0;a<soldats.size();a++){
 				
 				if(this.soldatsallistats.get(z).imatgepersonatge.getBounds().intersects(soldats.get(a).imatgepersonatge.getBounds())){
+					/**
+					 * atac del nuvol(moren els dos personatges)
+					 */
 					if(soldatsallistats.get(z).tipuspersonatge=="nuvol" || soldats.get(a).tipuspersonatge=="nuvol"){
 						double posnuvolX = soldatsallistats.get(z).imatgepersonatge.getX();
 						double posnuvolY = soldatsallistats.get(z).imatgepersonatge.getY();
-						esatacnuvol=true;
+						esatackamikaze=true;
 						matadorz=z;
 						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
 						Exercitpausa.remove(soldats.get(a).imatgepersonatge);
@@ -162,11 +180,14 @@ public class Exercit {
 						soldats.remove(a);
 					}
 					else{
+						/**
+						 * atac de la bola de foc(moren els dos)
+						 */
 				   if(soldatsallistats.get(z).tipuspersonatge=="bolafoc" || soldats.get(a).tipuspersonatge=="bolafoc" ){
 					   
 					   double posfocX = soldatsallistats.get(z).imatgepersonatge.getX();
 						double posfocY = soldatsallistats.get(z).imatgepersonatge.getY();
-						esatacfoc=true;
+						esatackamikaze=true;
 						matadorz=z;
 						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
 						Exercitpausa.remove(soldats.get(a).imatgepersonatge);
@@ -193,13 +214,16 @@ public class Exercit {
 		}
 	}
 
-	if(esatacnuvol==true || esatacfoc==true){
+	if(esatackamikaze==true){
 		soldatsallistats.remove(matadorz);}
 }
 			
 			
 		
-	
+	/**
+	 * mètode per comprobar que els soldats estan al desti
+	 * @return retorna si tots els soldats estan al desti
+	 */
 	public final boolean comprobardestisoldats(){
 		int contadordesti=0;
 		boolean arribadesti=false;

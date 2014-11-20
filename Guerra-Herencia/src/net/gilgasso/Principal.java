@@ -2,17 +2,35 @@ package net.gilgasso;
 import java.util.ArrayList;
 import acm.graphics.*;
 import acm.program.GraphicsProgram;
-
+/**
+ * 
+ * @author gil
+ *
+ */
 public class Principal extends GraphicsProgram {
 	
 	public void init(){
 		setSize(1200,800);
 	}
-	
+	/**
+	 * creo l'array dels exercits per crear la batalla
+	 */
 	ArrayList<Exercit> exercits;
+	/**
+	 * creo l'array dels soldats del primer exèrcit 
+	 */
 	ArrayList<Personatge> soldatsalabatalla;
+	/**
+	 * creo l'array dels soldats del segon exèrcit
+	 */
 	ArrayList<Personatge> soldatsalabatalla2;
+	/**
+	 * primer exèrcit
+	 */
 	Exercit exercit1;
+	/**
+	 * segon exèrcit
+	 */
 	Exercit exercit2;
 	
 	GImage finalguerra = new GImage("");
@@ -23,14 +41,28 @@ public class Principal extends GraphicsProgram {
 	}
 	
 	public void run(){
+		/**
+		 * numero de soldats per crear
+		 */
 		int  numsoldats=8;
+		/**
+		 * inicio Array del primer exèrcit
+		 */
 		soldatsalabatalla = new ArrayList<Personatge>();
+		/**
+		 * inicio Array del segon exèrcit
+		 */
 		soldatsalabatalla2 = new ArrayList<Personatge>();
+		/**
+		 * Aqui creo un rei per a cada exèrcit
+		 */
 		Personatge rei1 = new Rei("reilila.png",0,0,false,1,this.getWidth());
 		Personatge rei2 = new Rei("reiverd.png",0,0,false,1,this.getWidth());
 		soldatsalabatalla.add(rei1);
 		soldatsalabatalla2.add(rei2);
-		
+		/**
+		 * creo els personatges i els agrego a les arrays corresponents
+		 */
 		for(int i=0;i<numsoldats;i++){
 		  int numerosoldat = (int) (Math.random()*8)+1;
 			
@@ -47,6 +79,7 @@ public class Principal extends GraphicsProgram {
 				soldatsalabatalla2.add(samu2);
 			}
 			if(numerosoldat==2){
+				
 				Personatge nuvol = new Nuvol("nuvol.png",0,0,false,1,this.getWidth());
 				Personatge nuvol1 = new Nuvol("nuvol.png",0,0,false,1,this.getWidth());
 				soldatsalabatalla.add(nuvol);
@@ -77,7 +110,9 @@ public class Principal extends GraphicsProgram {
 			add(exercit2.soldatsallistats.get(index).imatgepersonatge);
 			
 			}
-		
+		/**
+		 * creo una batalla i faig que comenci la guerra
+		 */
 		Batalla Ardenas = new Batalla(this,exercits);
 		
 		while(!Ardenas.mirarvictoria){

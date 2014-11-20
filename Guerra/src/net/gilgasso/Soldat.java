@@ -9,23 +9,31 @@ import net.gilgasso.Principal;
  */
 public class Soldat{
 	/**
+	 * la velocitat del soldat
+	 */
+	static final int VELOCITATSOLDAT=9;
+	/**
 	 *  la imatge del soldat.
 	 */
-	GImage imatgesoldat;
+	GImage imatgepersonatge;
 	/**
 	 * boolean per saber si ha arribat al final de pantalla.
 	 */
     boolean desti;
-	
+    /**
+     * amplada de la pantalla
+     */
+	int amplada;
 	/**
 	 * 
 	 * @param imatge  és per exemple "soldat.png"
 	 * @param x la posicio en les x
 	 * @param y la posicio en les y
 	 */
-Soldat(String imatge,int x,int y) {
+Soldat(String imatge,int x,int y,int ampl) {
 		   
-		 imatgesoldat = new GImage(imatge,x,y);
+		 imatgepersonatge = new GImage(imatge,x,y);
+		 amplada=ampl;
 }
 	
 	
@@ -34,7 +42,7 @@ Soldat(String imatge,int x,int y) {
 	 * @return la imatge del soldat.
 	 */
    public GImage getImatgesoldat() {
-		return imatgesoldat;
+		return imatgepersonatge;
 	}
 
 	
@@ -44,7 +52,7 @@ Soldat(String imatge,int x,int y) {
      * @param y  la posicio y de la imatge
      */
 	public void setPosicio(double x,double y) {
-		this.imatgesoldat.setLocation(x,y);
+		this.imatgepersonatge.setLocation(x,y);
 	}
 
 	/**
@@ -52,16 +60,27 @@ Soldat(String imatge,int x,int y) {
 	 * @param x  moviment en les x
 	 * @param y  moviment en les y
 	 */
-	public void mouresoldat(int x,int y){
-		
-		if(imatgesoldat.getX()<1000-imatgesoldat.getWidth()&&imatgesoldat.getX()>-1){
-		imatgesoldat.move(x,y);
-		
-		}
-		else{
-			this.desti=true;
-		}
-	}
+public void mouresoldat(int dir){
+	    
+	    if(dir==0){
+			if(imatgepersonatge.getX()<this.amplada-imatgepersonatge.getWidth()&&imatgepersonatge.getX()>-1){
+				imatgepersonatge.move(VELOCITATSOLDAT,0);
+			
+			}
+			else{
+				this.desti=true;
+				}
+		    }
+	    else{
+	    	if(imatgepersonatge.getX()<this.amplada-imatgepersonatge.getWidth()&&imatgepersonatge.getX()>-1){
+				imatgepersonatge.move(-(VELOCITATSOLDAT-1),0);
+			
+			}
+			else{
+				this.desti=true;
+				}
+		    }
+	 }
 	
 	
 

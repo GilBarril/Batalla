@@ -4,34 +4,14 @@ import java.util.concurrent.*;
 import java.awt.event.*;
 
 import acm.graphics.GImage;
-/**
- * 
- * @author gil
- *
- */
+
 public class Batalla {
-	/**
-	 * boolea per mirar si un dels exercits guanya
-	 */
+	
 	boolean mirarvictoria=false;
-	/**
-	 * passes l'identificador de l'exercit guanyador
-	 */
 	int idexercitperdedor=0;
-	/**
-	 * Un array d'exèrcits
-	 */
 	ArrayList<Exercit> exercits;
-	/**
-	 * objecte pantalla (canvas)
-	 */
 	Principal Batallapausa;
 	
-	/**
-	 * 
-	 * @param pausa passo l'objecte pantalla(canvas)
-	 * @param battle2 Array d'exercits
-	 */
 	Batalla(Principal pausa,ArrayList<Exercit> battle2){
 		
 	exercits = battle2;	
@@ -39,24 +19,17 @@ public class Batalla {
 			
 	}
 	
-	/**
-	 * mètode que fa que comenci la guerra
-	 */
+	
 	public void Guerra(){
 		
 
-		/**
-		 * formacio dels dos exercits
-		 */
+		
 			for(Exercit exercitsbatalla : exercits ){
 				exercitsbatalla.formacio();
 				Batallapausa.pause(100); 	
 	    }
-		/**
-		 * miro que tots els soldats estiguin al desti
-		 * i que encara no s'hagi posat a true el miravictoria
-		 */
-		while((!exercits.get(0).comprobardestisoldats() && !exercits.get(1).comprobardestisoldats()) && !mirarvictoria){
+		
+		while(!exercits.get(0).comprobardestisoldats() && !exercits.get(1).comprobardestisoldats() && !mirarvictoria){
 			
 				exercits.get(0).moure();
 				exercits.get(1).comprovarbaixes(exercits.get(0).soldatsallistats);
@@ -82,10 +55,6 @@ public class Batalla {
 		Batallapausa.pause(50);
     }	
 	
-	/**
-	 * comrpoba si un dels exercits esta sense soldats
-	 * @return si hi ha victoria o no
-	 */
 	public final boolean mirarnumerodesoldats(){
 	
 		
@@ -101,19 +70,16 @@ public class Batalla {
 		
 		
 	}
-	/**
-	 * mostra la imatge de l'exercit guanyador
-	 * @param idexer passes l'index de l'exercit perdedor
-	 */
+	
 	public void mostrarguanyador(int idexer){
 		GImage win = new GImage("",350,200);
 		for(int b=0;b<exercits.size();b++){
 			if(b==idexer){
 				if(idexer==0){
-					win.setImage("guanya-verd.png");
+					win.setImage("guanyagroc.png");
 					
 				}else{
-					win.setImage("guanya-lila.png");
+					win.setImage("guanyaverd.png");
 					
 				}
 		    }

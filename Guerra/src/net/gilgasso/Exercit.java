@@ -14,15 +14,15 @@ public class Exercit {
 	/**
 	 *  el numero de files per formar
 	 */
-	int numfiles=0;
+	static int numfiles=7;
 	/**
 	 * altura de les files per formar
 	 */
-	int Altura =70;
+	final static int  Altura =70;
 	/**
 	 * amplada de les files per formar
 	 */
-	int Amplada = 70;
+	final static int Amplada = 70;
 	/**
 	 * direcció per saber cap on va l'exercit
 	 */
@@ -30,11 +30,11 @@ public class Exercit {
 	/**
 	 * amplada de la pantalla
 	 */
-	int ampladaPantalla=0;
+	static int ampladaPantalla=0;
 	/**
 	 *  porto la pantalla (canvas) per poder utilitzar algunes funcions
 	 */
-	Principal Exercitpausa;
+	Principal Exercitcanvas;
 
     /**
      * 
@@ -48,19 +48,16 @@ public class Exercit {
 		soldatsallistats = soldatsexercit;
 		direccio = dir;
 		ampladaPantalla = ampladapantalla;
-		Exercitpausa = pauses;
+		Exercitcanvas = pauses;
 }
 /**
  * forma els exercits abans de la batalla
  */
 	public void formacio(){
 		
-		if (soldatsallistats.size() >= 20) {
-		numfiles = 7;
-		} else {
-		
-		numfiles -= 2;
-		}
+		if (soldatsallistats.size() <= 20 && numfiles>1) {
+		numfiles -= 1;
+		} 
 		int[] files = new int[numfiles];
 		
 		for(Soldat peons : soldatsallistats) {
@@ -102,18 +99,18 @@ public class Exercit {
 		
 		if(this.direccio==0){
 		for(Soldat soldatmou : soldatsallistats ){
-			soldatmou.mouresoldat(10, 0);
+			soldatmou.mouresoldat(this.direccio);
 			
 			
 		}
-		Exercitpausa.pause(50);
+		Exercitcanvas.pause(50);
 		}else
 		{
 			for(Soldat soldatmou : soldatsallistats ){
-				soldatmou.mouresoldat(-9, 0);
+				soldatmou.mouresoldat(this.direccio);
 				
 		}
-			Exercitpausa.pause(50);
+			Exercitcanvas.pause(50);
 	}
 	
 	}
@@ -127,9 +124,9 @@ public class Exercit {
 		for(int z=0;z<this.soldatsallistats.size();z++){
 			for(int a=0;a<soldats.size();a++){
 				
-				if(this.soldatsallistats.get(z).imatgesoldat.getBounds().intersects(soldats.get(a).imatgesoldat.getBounds())){
+				if(this.soldatsallistats.get(z).imatgepersonatge.getBounds().intersects(soldats.get(a).imatgepersonatge.getBounds())){
 					
-					Exercitpausa.remove(soldats.get(a).imatgesoldat);
+					Exercitcanvas.remove(soldats.get(a).imatgepersonatge);
 					soldats.remove(a);
 					
 				}
