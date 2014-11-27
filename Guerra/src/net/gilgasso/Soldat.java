@@ -81,6 +81,16 @@ public void mouresoldat(int dir){
 				}
 		    }
 	 }
+
+
+	public boolean isDesti() {
+		return desti;
+	}
+
+
+	public void setDesti(boolean desti) {
+		this.desti = desti;
+	}
 	
 	
 

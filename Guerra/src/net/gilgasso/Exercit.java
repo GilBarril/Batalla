@@ -61,9 +61,9 @@ public class Exercit {
 		int[] files = new int[numfiles];
 		
 		for(Soldat peons : soldatsallistats) {
-			peons.desti=false;
+			peons.setDesti(false);
 			int quinafila = (int)(Math.random()*numfiles);
-			if(this.direccio==1){
+			if(this.getDireccio()==1){
 			files[quinafila]++;
 	        peons.setPosicio(ampladaPantalla-(files[quinafila]* Amplada), quinafila*Altura);
 	        
@@ -97,9 +97,9 @@ public class Exercit {
 	 */
 	public void moure(){
 		
-		if(this.direccio==0){
+		if(this.getDireccio()==0){
 		for(Soldat soldatmou : soldatsallistats ){
-			soldatmou.mouresoldat(this.direccio);
+			soldatmou.mouresoldat(this.getDireccio());
 			
 			
 		}
@@ -107,7 +107,7 @@ public class Exercit {
 		}else
 		{
 			for(Soldat soldatmou : soldatsallistats ){
-				soldatmou.mouresoldat(this.direccio);
+				soldatmou.mouresoldat(this.getDireccio());
 				
 		}
 			Exercitcanvas.pause(50);
@@ -115,6 +115,12 @@ public class Exercit {
 	
 	}
 	
+	public int getDireccio() {
+		return direccio;
+	}
+	public void setDireccio(int direccio) {
+		this.direccio = direccio;
+	}
 	/**
 	 * comprovo si hi ha baixes a l'exercit
 	 * @param soldats li passo l¡array enemic
@@ -124,9 +130,9 @@ public class Exercit {
 		for(int z=0;z<this.soldatsallistats.size();z++){
 			for(int a=0;a<soldats.size();a++){
 				
-				if(this.soldatsallistats.get(z).imatgepersonatge.getBounds().intersects(soldats.get(a).imatgepersonatge.getBounds())){
+				if(this.soldatsallistats.get(z).getImatgesoldat().getBounds().intersects(soldats.get(a).getImatgesoldat().getBounds())){
 					
-					Exercitcanvas.remove(soldats.get(a).imatgepersonatge);
+					Exercitcanvas.remove(soldats.get(a).getImatgesoldat());
 					soldats.remove(a);
 					
 				}

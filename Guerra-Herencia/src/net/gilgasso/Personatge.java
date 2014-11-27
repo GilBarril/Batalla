@@ -77,8 +77,35 @@ public abstract class Personatge{
    public void setImatgepersonatge(String s,double x,double y) {
  		this.imatgepersonatge = new GImage(s,x,y);
  	}
-   
+   /**
+    * 
+    * @return el valor del boolean esforma.
+    */
+    public boolean isEsforma() {
+	return esforma;
+}
     /**
+     * 
+     * @return retorna el tipus del personatge
+     */
+	public String getTipuspersonatge() {
+		return tipuspersonatge;
+	}
+	/**
+	 * 
+	 * @param passes el valor del desti
+	 */
+	public void setDesti(boolean desti) {
+		this.desti = desti;
+	}
+	/**
+	 * 
+	 * @return el valor del boolean desti
+	 */
+	public boolean isDesti() {
+		return desti;
+	}
+	/**
      * metode moure's
      * @param dir
      */

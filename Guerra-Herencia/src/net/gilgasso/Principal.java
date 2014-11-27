@@ -106,8 +106,8 @@ public class Principal extends GraphicsProgram {
 		exercits.add(exercit2);
 		
 		for(int index=0;index<soldatsalabatalla.size();index++){
-			add(exercit1.soldatsallistats.get(index).imatgepersonatge);
-			add(exercit2.soldatsallistats.get(index).imatgepersonatge);
+			add(exercit1.soldatsallistats.get(index).getImatgepersonatge());
+			add(exercit2.soldatsallistats.get(index).getImatgepersonatge());
 			
 			}
 		/**
@@ -115,12 +115,12 @@ public class Principal extends GraphicsProgram {
 		 */
 		Batalla Ardenas = new Batalla(this,exercits);
 		
-		while(!Ardenas.mirarvictoria){
+		while(!Ardenas.isMirarvictoria()){
 		Ardenas.Guerra();
 		}
 		pause(200);
 		this.removeAll();
-		Ardenas.mostrarguanyador(Ardenas.idexercitperdedor);
+		Ardenas.mostrarguanyador(Ardenas.getIdexercitperdedor());
 		
 		
 		

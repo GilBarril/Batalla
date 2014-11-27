@@ -83,10 +83,10 @@ public class Exercit {
 		int[] files=new int[numfiles];
 		
 		for(Personatge peons : soldatsallistats){
-			if(peons.esforma==true){	
-				peons.desti=false;
+			if(peons.isEsforma()){	
+				peons.setDesti(false);;
 				int quinafila = (int)(Math.random()*numfiles);
-				if(this.direccio==1){
+				if(this.getDireccio()==1){
 					files[quinafila]++;
 			        peons.setPosicio(ampladaPantalla-(files[quinafila]* AMPLADA), quinafila*ALTURA);
 		        
@@ -99,7 +99,21 @@ public class Exercit {
 		
 		
 		}
-		
+	/**
+	 * 	
+	 * @return la direccio de l'exercit
+	 */
+	public int getDireccio() {
+		return direccio;
+	}
+    /**
+     * 
+     * @param direccio passes la direccio de l'exercit
+     */
+	public void setDireccio(int direccio) {
+		this.direccio = direccio;
+	}
+
 	/**
 	 * 
 	 * @return array de Personatges
@@ -124,7 +138,7 @@ public class Exercit {
 		
 		
 		for(Personatge soldatmou : soldatsallistats ){	
-			soldatmou.moure(this.direccio);
+			soldatmou.moure(this.getDireccio());
 		}
 	}
 		
@@ -141,8 +155,8 @@ public class Exercit {
 		for(Personatge soldatsdracs : soldatsallistats){
 		if(soldatsdracs instanceof Drac){
 			if(tirarfoc==8){
-				flama = ((Drac)soldatsdracs).treureboladefoc(this.direccio);
-				Exercitpausa.add(flama.imatgepersonatge);
+				flama = ((Drac)soldatsdracs).treureboladefoc(this.getDireccio());
+				Exercitpausa.add(flama.getImatgepersonatge());
 			    bolesdefoc.add(flama);
 			}
 		
@@ -158,53 +172,53 @@ public class Exercit {
      * @param soldats passo array de l'exercit enemic
      */
 	public void comprovarbaixes(ArrayList<Personatge> soldats){
-		esatackamikaze=false;
+		this.setEsatackamikaze(false);
 		for(int z=0;z<this.soldatsallistats.size();z++){
 			for(int a=0;a<soldats.size();a++){
 				
-				if(this.soldatsallistats.get(z).imatgepersonatge.getBounds().intersects(soldats.get(a).imatgepersonatge.getBounds())){
+				if(this.soldatsallistats.get(z).getImatgepersonatge().getBounds().intersects(soldats.get(a).getImatgepersonatge().getBounds())){
 					/**
 					 * atac del nuvol(moren els dos personatges)
 					 */
-					if(soldatsallistats.get(z).tipuspersonatge=="nuvol" || soldats.get(a).tipuspersonatge=="nuvol"){
-						double posnuvolX = soldatsallistats.get(z).imatgepersonatge.getX();
-						double posnuvolY = soldatsallistats.get(z).imatgepersonatge.getY();
-						esatackamikaze=true;
-						matadorz=z;
-						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
-						Exercitpausa.remove(soldats.get(a).imatgepersonatge);
+					if(soldatsallistats.get(z).getTipuspersonatge()=="nuvol" || soldats.get(a).getTipuspersonatge()=="nuvol"){
+						double posnuvolX = soldatsallistats.get(z).getImatgepersonatge().getX();
+						double posnuvolY = soldatsallistats.get(z).getImatgepersonatge().getY();
+						this.setEsatackamikaze(true);
+						this.setMatadorz(z);
+						Exercitpausa.remove(soldatsallistats.get(z).getImatgepersonatge());
+						Exercitpausa.remove(soldats.get(a).getImatgepersonatge());
 						soldatsallistats.get(z).setImatgepersonatge("boom.png",posnuvolX,posnuvolY-10);
-						Exercitpausa.add(soldatsallistats.get(z).imatgepersonatge);
+						Exercitpausa.add(soldatsallistats.get(z).getImatgepersonatge());
 						Exercitpausa.pause(30);
-						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
+						Exercitpausa.remove(soldatsallistats.get(z).getImatgepersonatge());
 						soldats.remove(a);
 					}
 					else{
 						/**
 						 * atac de la bola de foc(moren els dos)
 						 */
-				   if(soldatsallistats.get(z).tipuspersonatge=="bolafoc" || soldats.get(a).tipuspersonatge=="bolafoc" ){
+				   if(soldatsallistats.get(z).getTipuspersonatge()=="bolafoc" || soldats.get(a).getTipuspersonatge()=="bolafoc" ){
 					   
-					   double posfocX = soldatsallistats.get(z).imatgepersonatge.getX();
-						double posfocY = soldatsallistats.get(z).imatgepersonatge.getY();
-						esatackamikaze=true;
-						matadorz=z;
-						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
-						Exercitpausa.remove(soldats.get(a).imatgepersonatge);
+					   double posfocX = soldatsallistats.get(z).getImatgepersonatge().getX();
+						double posfocY = soldatsallistats.get(z).getImatgepersonatge().getY();
+						this.setEsatackamikaze(true);
+						this.setMatadorz(z);
+						Exercitpausa.remove(soldatsallistats.get(z).getImatgepersonatge());
+						Exercitpausa.remove(soldats.get(a).getImatgepersonatge());
 						soldatsallistats.get(z).setImatgepersonatge("soldatcremat.png",posfocX,posfocY-10);
-						Exercitpausa.add(soldatsallistats.get(z).imatgepersonatge);
+						Exercitpausa.add(soldatsallistats.get(z).getImatgepersonatge());
 						Exercitpausa.pause(30);
-						Exercitpausa.remove(soldatsallistats.get(z).imatgepersonatge);
+						Exercitpausa.remove(soldatsallistats.get(z).getImatgepersonatge());
 						soldats.remove(a);
 				   }else{
 					
-					if(soldatsallistats.get(z).tipuspersonatge=="samurai"){
+					if(soldatsallistats.get(z).getTipuspersonatge()=="samurai"){
 						soldats.get(a).vides-=2;
 					}else{
 					soldats.get(a).vides-=1;
 					}
 					if(soldats.get(a).vides<=0){
-							Exercitpausa.remove(soldats.get(a).imatgepersonatge);
+							Exercitpausa.remove(soldats.get(a).getImatgepersonatge());
 							soldats.remove(a);
 						}
 					}}
@@ -219,7 +233,32 @@ public class Exercit {
 }
 			
 			
-		
+	/**
+	 * 	
+	 * @return el boolean que et diu si es o no atac d'un kamikaze
+	 */
+	public boolean isEsatackamikaze() {
+		return esatackamikaze;
+	}
+    /**
+     * 
+     * @return el numero dins de l'array de l'objecte 
+     */
+	public int getMatadorz() {
+		return matadorz;
+	}
+
+	public void setMatadorz(int matadorz) {
+		this.matadorz = matadorz;
+	}
+    /**
+     * 
+     * @param esatackamikaze passes el boolean
+     */
+	public void setEsatackamikaze(boolean esatackamikaze) {
+		this.esatackamikaze = esatackamikaze;
+	}
+
 	/**
 	 * mètode per comprobar que els soldats estan al desti
 	 * @return retorna si tots els soldats estan al desti
@@ -230,11 +269,11 @@ public class Exercit {
 		ArrayList<Personatge> bolesfinal = new ArrayList<Personatge>();
 		for(int i=0;i<soldatsallistats.size();i++){
 			
-				if(soldatsallistats.get(i).desti==true){
+				if(soldatsallistats.get(i).isDesti()==true){
 					if(soldatsallistats.get(i) instanceof Bolafoc){
 						
 						bolesfinal.add(soldatsallistats.get(i));
-						Exercitpausa.remove(soldatsallistats.get(i).imatgepersonatge);
+						Exercitpausa.remove(soldatsallistats.get(i).getImatgepersonatge());
 					}
 					contadordesti+=1;
 				}

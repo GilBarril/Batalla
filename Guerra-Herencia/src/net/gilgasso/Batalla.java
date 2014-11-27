@@ -62,8 +62,8 @@ public class Batalla {
 				exercits.get(1).comprovarbaixes(exercits.get(0).soldatsallistats);
 				exercits.get(1).moure();
 				exercits.get(0).comprovarbaixes(exercits.get(1).soldatsallistats);
-				exercits.get(0).atacdelsdracs(exercits.get(0).direccio);
-				exercits.get(1).atacdelsdracs(exercits.get(1).direccio);
+				exercits.get(0).atacdelsdracs(exercits.get(0).getDireccio());
+				exercits.get(1).atacdelsdracs(exercits.get(1).getDireccio());
 				
 				Batallapausa.pause(55); 	
 				this.mirarnumerodesoldats();
@@ -72,11 +72,11 @@ public class Batalla {
 			
 		
 		for(int s=0;s<exercits.size();s++){
-			if(exercits.get(s).direccio==0){
-				exercits.get(s).direccio=1;
+			if(exercits.get(s).getDireccio()==0){
+				exercits.get(s).setDireccio(1);
 			}
 			else{
-				exercits.get(s).direccio=0;
+				exercits.get(s).setDireccio(0);
 			}	
 	    }	
 		Batallapausa.pause(50);
@@ -92,8 +92,8 @@ public class Batalla {
 		for(int exer=0;exer<exercits.size();exer++){
 			
 			if(exercits.get(exer).soldatsallistats.size()==0){
-				mirarvictoria = true;
-				idexercitperdedor=exer;
+				this.setMirarvictoria(true);
+				this.setIdexercitperdedor(exer);
 			}
 				
 		}
@@ -101,6 +101,35 @@ public class Batalla {
 		
 		
 	}
+	/**
+	 * 
+	 * @return index de l'exercit perdedor
+	 */
+	public int getIdexercitperdedor() {
+		return idexercitperdedor;
+	}
+    /**
+     * 
+     * @param idexercitperdedor passes l'index de l'exercit perdedor
+     */
+	public void setIdexercitperdedor(int idexercitperdedor) {
+		this.idexercitperdedor = idexercitperdedor;
+	}
+    /**
+     * 
+     * @return si hi ha victoria o no
+     */
+	public boolean isMirarvictoria() {
+		return mirarvictoria;
+	}
+    /**
+     * 
+     * @param mirarvictoria passes valor al boolean de si hi ha victoria
+     */
+	public void setMirarvictoria(boolean mirarvictoria) {
+		this.mirarvictoria = mirarvictoria;
+	}
+
 	/**
 	 * mostra la imatge de l'exercit guanyador
 	 * @param idexer passes l'index de l'exercit perdedor
